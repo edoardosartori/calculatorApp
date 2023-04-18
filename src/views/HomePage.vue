@@ -1,56 +1,56 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content :fullscreen="true">
+    <ion-content :fulldisplay="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
+          <ion-title size="large">Calculator</ion-title>
         </ion-toolbar>
       </ion-header>
-
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      
+      <div class="container">
+        <div class="display">-</div>
+        <div class="display main-display">0</div>
+        <div>
+          <div class="buttons-row">
+            <button class="button delete-btn">C</button>
+            <button class="button delete-btn">&larr;</button>
+            <button class="button operator-btn">%</button>
+            <button class="button operator-btn">&divide;</button>
+          </div>
+          
+          <div class="buttons-row">
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button operator-btn">&times;</button>
+          </div>
+          
+          <div class="buttons-row">
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button operator-btn">&minus;</button>
+          </div>
+          
+          <div class="buttons-row">
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button operator-btn">&plus;</button>
+          </div>
+          
+          <div class="buttons-row">
+            <button class="button double">0</button>
+            <button class="button">.</button>
+            <button class="button operator-btn">&equals;</button>
+          </div>
+        </div>
       </div>
     </ion-content>
   </ion-page>
 </template>
 
-<script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-</script>
+<script src="../script/homepage.js"/>
 
-<style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+<style src="../style/homepage.css"/>
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-</style>

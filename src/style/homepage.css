@@ -1,0 +1,87 @@
+.container {
+  max-width: 500px;
+  margin: 3.5rem auto;
+  padding: 35px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(0, 0, 0, 0.897);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.display {
+  color: #232323;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.01);
+  border-radius: 16px;
+  font-size: 16pt;
+  font-weight: bold;
+  text-align: center;
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+  overflow: auto;
+}
+
+.main-display {
+  font-size: 50pt;
+  text-align: right;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 2% 0;
+  padding: 3pt;
+}
+
+.button {
+  border-radius: 16px;
+  color: white;
+  background: #373538;
+  font-size: 35px;
+  height: 5rem;
+  flex-basis: 20%;
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  box-shadow: 0 4px 30px rgba(35, 35,35, 0.1);
+}
+
+.delete-btn {
+  background: #858386;
+}
+
+.operator-btn {
+  background: #f57b38;
+}
+
+.button:hover {
+  background: rgba(98, 97, 97, 0.75);;
+}
+
+.button:active {
+  background: transparent;
+}
+
+.operator-btn:hover {
+  background: #f76111;
+}
+
+.operator-btn:active {
+  background: transparent;
+}
+
+.button:disabled,
+.button[disabled] {
+  border: 1px solid #999999;
+  background: #cccccc;
+  color: #666666;
+}
+
+.double {
+  flex-basis: 47%;
+}
