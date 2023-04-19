@@ -12,8 +12,8 @@ ion-toolbar {
   max-width: 500px;
   margin: 3.5rem auto;
   margin-top: 1rem;
-  padding: 15px;
-  padding-bottom: 4pt;
+  padding: 30pt;
+  padding-bottom: 15pt;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.34);
   background: rgba(0, 0, 0, 0.897);
