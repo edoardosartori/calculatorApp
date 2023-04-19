@@ -1,7 +1,19 @@
+ion-title {
+  --color:rgba(255, 255, 255, 0.723);
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+}
+
+ion-toolbar {
+    --background: linear-gradient(320deg, #040303, #626367, #0c0b11);
+}
+
 .container {
   max-width: 500px;
   margin: 3.5rem auto;
-  padding: 35px;
+  margin-top: 1rem;
+  padding: 15px;
+  padding-bottom: 4pt;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.34);
   background: rgba(0, 0, 0, 0.897);
@@ -14,10 +26,11 @@
 .display {
   color: #232323;
   margin: 1rem auto;
+  margin-top: 0;
   padding: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.01);
   border-radius: 16px;
-  font-size: 16pt;
+  font-size: x-large;
   font-weight: bold;
   text-align: center;
   backdrop-filter: blur(5.5px);
@@ -28,15 +41,15 @@
 }
 
 .main-display {
-  font-size: 50pt;
+  font-size: xx-large;
   text-align: right;
 }
 
 .buttons-row {
   display: flex;
   justify-content: space-between;
-  margin: 2% 0;
-  padding: 3pt;
+  margin: 1% 0;
+  padding: 1pt;
 }
 
 .button {
@@ -45,7 +58,7 @@
   background: #373538;
   font-size: 35px;
   height: 5rem;
-  flex-basis: 20%;
+  flex-basis: 22%;
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
   box-shadow: 0 4px 30px rgba(35, 35,35, 0.1);
@@ -78,8 +91,8 @@
 .button:disabled,
 .button[disabled] {
   border: 1px solid #999999;
-  background: #cccccc;
-  color: #666666;
+  background: #cccccc5f;
+  color: #666666d6;
 }
 
 .double {
