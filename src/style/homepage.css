@@ -1,5 +1,5 @@
 ion-title {
-  --color:rgba(255, 255, 255, 0.723);
+  --color:rgba(255, 255, 255, 0.788);
   text-align: center;
   font-family: "Lexend", sans-serif;
 }
@@ -27,16 +27,17 @@ ion-toolbar {
 .mode-selection {
   text-align: center;
   margin: 0;
-  margin-bottom: 30pt;
+  margin-bottom: 15pt;
 }
 
 .mode-selection-btn {
-  padding: 1pt;
+  padding: 2pt;
   color: white;
   background-color: transparent;
   margin-top: 0;
   margin-left: 1rem;
   margin-right: 1rem;
+  border-radius: 3pt;
 }
 
 .mode-selection-btn:hover {

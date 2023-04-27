@@ -2,6 +2,7 @@ export default {
   name: 'HardMode',
   data() {
 		return {
+      expression: '',
 			buffer: '',
 			calcs: '',
 			calculated: false,
@@ -12,6 +13,7 @@ export default {
 	},
 	methods: {
 		reset() {
+      this.expression = '';
 			this.buffer = '';
 			this.calcs = '';
 			this.calculated = false;
@@ -19,6 +21,53 @@ export default {
 			this.secondOperand = '';
 			this.operator = '';
 		},
+
+    action(value) {
+      if(value !== undefined) {
+        if(value == 'x^2'){
+          this.expression = this.square();
+        }
+        
+        else if(value == 'radic'){
+          this.expression = Math.sqrt(this.expression);
+        }
+        else if(value == 'log'){
+          this.expression = Math.log(this.expression);
+        }
+        else if(value == 'sin'){
+          this.expression = Math.sin(this.expression);
+        }
+        else if(value == 'cos'){
+          this.expression = Math.cos(this.expression);
+        }
+        else if(value == 'tan'){
+          this.expression = Math.tan(this.expression);
+        }
+  
+        else if(value == '=') {
+          const answer = eval(this.expression);
+          this.expression = answer;
+          this.buffer = answer;
+          
+        } else {
+          this.expression += value;
+        }
+  
+        if(this.expression == undefined) {
+          this.expression = '';
+          value = 0;
+        } else {
+          value = this.expression;
+        }
+        // expression += value;
+  
+  
+      }
+    },
+
+    square() {
+      return eval(this.expression * this.expression);
+    },
 		
 		delete() {
 			this.buffer = this.buffer.slice(0, -1);
@@ -78,8 +127,9 @@ export default {
 			console.log("Second operand set to: " + this.buffer);
 			if(this.firstOperand != '' && this.operator != '' && this.secondOperand != '') {
 				this.addToCalcs(this.buffer);
-				this.buffer = eval(this.firstOperand + this.operator + this.secondOperand).toString();
-				console.log("Result is: " + this.buffer);
+        let expression = this.firstOperand + this.operator + this.secondOperand;
+				this.buffer = eval(expression).toString();
+				console.log("Calculated: " + expression + " = " + this.buffer);
 				this.calcs += ' = ' + this.buffer;
 				this.operator = '';
 				this.calculated = true;
