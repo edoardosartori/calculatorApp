@@ -8,7 +8,8 @@
         C
       </button>
       <button class="button delete-btn"
-        v-on:click="this.delete()">
+        v-on:click="this.delete()"
+        :disabled="calculated">
         &larr;
       </button>
       <button class="button operator-btn"

@@ -5,12 +5,9 @@ export default {
 			buffer: '',
 			calcs: '',
 			calculated: false,
-			opBlocked: false,
-			symbols: ['+', '-', '*', '/', '%'],
 			firstOperand: '',
 			secondOperand: '',
-			operator: '',
-			hardMode: false
+			operator: ''
 		};
 	},
 	methods: {
@@ -18,7 +15,6 @@ export default {
 			this.buffer = '';
 			this.calcs = '';
 			this.calculated = false;
-			this.opBlocked = false;
 			this.firstOperand = '';
 			this.secondOperand = '';
 			this.operator = '';
@@ -49,7 +45,6 @@ export default {
 				}
 				else this.addToCalcs(symbol);
 				this.firstOperand = this.buffer;
-				console.log("First operand set to: " + this.buffer);
 			}
 			else if(this.buffer != '') {
 				this.calcs += this.buffer;
@@ -64,7 +59,6 @@ export default {
 				this.calcs = this.calcs.slice(0, -1)
 				this.addToCalcs(symbol);
 			}
-			console.log("Operator set to: " + symbol);
 			this.buffer = '';
 		},
 
@@ -79,12 +73,11 @@ export default {
 			if(this.buffer == '')
 				return;
 			this.secondOperand = this.buffer;
-			console.log("Second operand set to: " + this.buffer);
 			if(this.firstOperand != '' && this.operator != '' && this.secondOperand != '') {
 				this.addToCalcs(this.buffer);
-				debugger;
-				this.buffer = eval(this.firstOperand + this.operator + this.secondOperand).toString();
-				console.log("Result is: " + this.buffer);
+        let expression = this.firstOperand + this.operator + this.secondOperand;
+				this.buffer = eval(expression).toString();
+				console.log("Calculated: " + expression + " = " + this.buffer);
 				this.calcs += ' = ' + this.buffer;
 				this.operator = '';
 				this.calculated = true;
