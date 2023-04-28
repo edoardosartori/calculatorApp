@@ -49,7 +49,8 @@ export default {
 			else if(this.buffer != '') {
 				this.calcs += this.buffer;
 				this.addToCalcs(symbol);
-				this.buffer = eval(this.firstOperand + this.operator + this.buffer);
+				let expression = this.firstOperand + this.operator + this.buffer;
+				this.buffer = eval(expression);
 				this.firstOperand = this.buffer;
 				this.operator = symbol;
 				
@@ -76,7 +77,7 @@ export default {
 			if(this.firstOperand != '' && this.operator != '' && this.secondOperand != '') {
 				this.addToCalcs(this.buffer);
         let expression = this.firstOperand + this.operator + this.secondOperand;
-				this.buffer = eval(expression).toString();
+				this.buffer = eval(expression.replace('−', '-')).toString().replace('-', '−');
 				console.log("Calculated: " + expression + " = " + this.buffer);
 				this.calcs += ' = ' + this.buffer;
 				this.operator = '';
