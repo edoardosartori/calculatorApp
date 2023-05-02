@@ -3,31 +3,27 @@ export default {
   data() {
 		return {
       expression: '',
-			buffer: '',
-			calcs: '',
+			calculationDisplay: '',
+			mainDisplay: '',
 			calculated: false,
-			firstOperand: '',
-			secondOperand: '',
-			operator: ''
+			result: ''
 		};
 	},
 	methods: {
 		reset() {
       this.expression = '';
-			this.buffer = '';
-			this.calcs = '';
+			this.calculationDisplay = '';
+			this.mainDisplay = '';
 			this.calculated = false;
-			this.firstOperand = '';
-			this.secondOperand = '';
-			this.operator = '';
+			this.result = '';
 		},
 
     action(value) {
+			console.log('expression: ' + this.expression);
       if(value !== undefined) {
         if(value == 'x^2'){
           this.expression = this.square();
         }
-        
         else if(value == 'radic'){
           this.expression = Math.sqrt(this.expression);
         }
@@ -45,111 +41,55 @@ export default {
         }
   
         else if(value == '=') {
-          const answer = eval(this.expression);
-          this.expression = answer;
-          this.buffer = answer;
-          
-        } else {
-          this.expression += value;
+					this.getResult();
+					this.printCalculation(value);
         }
-  
+				else {
+					this.calculated = false;
+          this.expression += value;
+					this.printCalculation(value);
+        }
+
         if(this.expression == undefined) {
           this.expression = '';
           value = 0;
         } else {
           value = this.expression;
         }
-        // expression += value;
-  
-  
       }
     },
 
     square() {
-      return eval(this.expression * this.expression);
+			if(this.expression != undefined) {
+				this.calculated = true;
+
+				return eval(this.expression * this.expression);
+			}
+			else {
+
+				return;
+			}
     },
 		
 		delete() {
-			this.buffer = this.buffer.slice(0, -1);
-		},
-		
-		handleNumber(number) {
-			if(this.calculated) {
-				this.reset();
-				this.buffer = number;
-			}
-			else {
-				if(this.buffer=='0') this.buffer = number;
-				else this.buffer = this.buffer + number;
-			}
-		},
-
-		handleSymbol(symbol) {
-			this.calculated = false;
-			if(symbol === '(' || symbol === ')') {
-				this.buffer += symbol;
-				return;
-			}
-			if(this.operator == '') {
-				this.operator = symbol;
-				if(this.firstOperand == '') {
-					this.calcs += this.buffer;
-					this.addToCalcs(symbol);
-				}
-				else this.addToCalcs(symbol);
-				this.firstOperand = this.buffer;
-				console.log("First operand set to: " + this.buffer);
-			}
-			else if(this.buffer != '') {
-				this.calcs += this.buffer;
-				this.addToCalcs(symbol);
-				let expression = this.firstOperand + this.operator + this.buffer;
-				this.buffer = eval(expression);
-				this.firstOperand = this.buffer;
-				this.operator = symbol;
-				
-			}
-			else {
-				this.operator = symbol;
-				this.calcs = this.calcs.slice(0, -1)
-				this.addToCalcs(symbol);
-			}
-			console.log("Operator set to: " + symbol);
-			this.buffer = '';
-		},
-
-		handleFunction(functionz) {
-			console.log(functionz);
-		},
-
-		handleComma() {
-			if(this.buffer == '') {
-				this.buffer = '0.';
-			}
-			else this.buffer += '.'; 
+			this.expression = this.expression.slice(0, -1);
+			this.calculationDisplay = this.calculationDisplay.slice(0, -1);
 		},
 
 		getResult() {
-			if(this.buffer == '')
-				return;
-			this.secondOperand = this.buffer;
-			console.log("Second operand set to: " + this.buffer);
-			if(this.firstOperand != '' && this.operator != '' && this.secondOperand != '') {
-				this.addToCalcs(this.buffer);
-        let expression = this.firstOperand + this.operator + this.secondOperand;
-				this.buffer = eval(expression.replace('−', '-')).toString().replace('-', '−');
-				console.log("Calculated: " + expression + " = " + this.buffer);
-				this.calcs += ' = ' + this.buffer;
-				this.operator = '';
-				this.calculated = true;
-			}	
+			this.result = eval(this.expression);
+			this.expression = this.result;
+			this.mainDisplay = this.result;
+			this.calculated = true;
+			console.log('Answer is: ' + this.result);
 		},
 		
-		addToCalcs(value) {
+		printCalculation(value) {
 			if(value == '*') value = '×';
 			if(value == '/') value = '÷';
 			if(value == '-') value = '−';
-			this.calcs += value;
+			if(value == '=') value = ' = ' + this.result;
+			this.calculationDisplay += value;
 		}
   }
 };
