@@ -78,7 +78,7 @@ export default {
 				this.addToCalcs(this.buffer);
         let expression = this.firstOperand + this.operator + this.secondOperand;
 				this.buffer = eval(expression.replace('−', '-')).toString().replace('-', '−');
-				console.log("Calculated: " + expression + " = " + this.buffer);
+				// console.log("Calculated: " + expression + " = " + this.buffer);
 				this.calcs += ' = ' + this.buffer;
 				this.operator = '';
 				this.calculated = true;
